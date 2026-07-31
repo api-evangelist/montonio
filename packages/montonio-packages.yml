@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/package/@montonio/montonio-js
+notes: >-
+  Montonio ships a first-party front-end JavaScript SDK (embeddable checkout /
+  BLIK / cards UI). Server-side integration is done directly against the
+  JWT-authenticated REST APIs; Montonio publishes no official server SDKs for
+  Python/PHP/Java/Go/Ruby/.NET (its docs recommend community JWT libraries such
+  as jsonwebtoken, firebase/php-jwt, and PyJWT for signing requests).
+packages:
+- language: javascript
+  registry: npm
+  name: "@montonio/montonio-js"
+  url: https://www.npmjs.com/package/@montonio/montonio-js
+  install: npm install @montonio/montonio-js
+  version: 1.1.9
+  description: Montonio JS SDK for front-end web applications (MontonioCheckout, embedded BLIK/cards).
+  official: true
+- language: javascript
+  registry: cdn
+  name: montonio.umd.js
+  url: https://js.montonio.com/1.x.x/montonio.umd.js
+  install: '<script src="https://js.montonio.com/1.x.x/montonio.umd.js"></script>'
+  description: Hosted UMD build of the Montonio JS SDK; exposes window.Montonio.
+  official: true

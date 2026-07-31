@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/stargate/widgets + embedded-cards / embedded-blik guides
+loader:
+  npm: "@montonio/montonio-js"
+  umd: https://js.montonio.com/1.x.x/montonio.umd.js
+  global: window.Montonio
+families:
+- family: Checkout
+  components:
+  - name: MontonioCheckout
+    description: Embedded checkout component initialized from a Session UUID (embedded cards flow).
+    docs: https://docs.montonio.com/api/stargate/guides/embedded-cards
+- family: Payment method selection
+  components:
+  - name: MontonioLegacy.Checkout.PaymentInitiation
+    description: Renders the store's enabled payment methods (bank chooser) into a target div using storeSetupData from GET /stores/payment-methods.
+    docs: https://docs.montonio.com/api/stargate/widgets
+- family: Embedded BLIK
+  components:
+  - name: Blik
+    description: Embedded BLIK code field and confirmation modal (render, validate, showModal, closeModal, waitForPayment, setLocale).
+    docs: https://docs.montonio.com/api/stargate/guides/embedded-blik
+- family: Embedded cards
+  components:
+  - name: Embedded card fields
+    description: Montonio-hosted card input fields with 3DS handling, initialized via a checkout Session.
+    docs: https://docs.montonio.com/api/stargate/guides/embedded-cards

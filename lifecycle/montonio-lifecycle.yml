@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/stargate/changes
+notes: >-
+  Montonio versions APIs in the host/path (Stargate is unversioned at
+  stargate.montonio.com/api; Shipping is v2 at shipping.montonio.com/api/v2). It
+  publishes a backwards-compatibility policy but no dated changelog and no formal
+  Sunset/Deprecation-header (RFC 8594) deprecation policy, so no Deprecation
+  pointer is emitted.
+versioning:
+  scheme: uri-path
+  apis:
+  - {api: Stargate Payments, version: unversioned, base: https://stargate.montonio.com/api}
+  - {api: Shipping, version: v2, base: https://shipping.montonio.com/api/v2}
+  policy_url: https://docs.montonio.com/api/stargate/changes
+backwards_compatible_changes:
+- Adding new endpoints.
+- Adding new optional request parameters to existing endpoints.
+- Adding new properties to existing response objects.
+- Adding new enum values to existing enums.
+- Adding new error codes.
+- Changing the order of properties in existing request and response objects.
+status_page: https://status.montonio.com
+support: support@montonio.com
+deprecation:
+  policy_url: null
+  sunset_header: false
+deprecated_operations: []

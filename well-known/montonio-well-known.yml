@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/* on Montonio hosts
+notes: >-
+  No /.well-known/ discovery documents are published on any Montonio host. All
+  probed paths returned 404 (www/root/stargate) or connection failure. Recorded
+  as valid negative discovery data. Montonio authenticates with HS256 JWTs signed
+  by a store Access Key + Secret Key, so there is no OIDC/OAuth discovery surface.
+hosts:
+- host: https://www.montonio.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://stargate.montonio.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}

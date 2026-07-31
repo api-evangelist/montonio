@@ -1,0 +1,53 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: https://docs.montonio.com/api/stargate/reference (documented REST operations)
+notes: >-
+  No official hosted/remote Montonio MCP server was found. This is a CANDIDATE
+  tool list derived from Montonio's documented REST operations across the
+  Payments (Stargate) and Shipping (v2) APIs. Montonio does invite AI agents to
+  read its /llms.txt to assist with integration, but publishes no MCP endpoint.
+server:
+  name: montonio
+  transport: http
+  url: null
+tools:
+- name: list_payment_methods
+  description: Get the store's enabled payment methods.
+  source_operation: "GET /stores/payment-methods (Stargate)"
+- name: create_order
+  description: Create an Order and get a paymentUrl to redirect the customer.
+  source_operation: "POST /orders (Stargate)"
+- name: get_order
+  description: Retrieve an Order and its paymentStatus by UUID.
+  source_operation: "GET /orders/:orderUuid (Stargate)"
+- name: create_refund
+  description: Create a Refund against a paid Order (requires idempotencyKey).
+  source_operation: "POST /refunds (Stargate)"
+- name: create_payment_link
+  description: Create a shareable Payment Link.
+  source_operation: "POST /payment-links (Stargate)"
+- name: create_session
+  description: Open an embedded-cards checkout Session.
+  source_operation: "POST /sessions (Stargate)"
+- name: list_payouts
+  description: List payout report statements for a store.
+  source_operation: "GET /stores/:storeUuid/payouts (Stargate)"
+- name: get_store_balances
+  description: Get store payout balances.
+  source_operation: "GET /store-balances (Stargate)"
+- name: list_carriers
+  description: Get all shipping carriers.
+  source_operation: "GET /carriers (Shipping v2)"
+- name: list_shipping_methods
+  description: Get shipping methods for a store.
+  source_operation: "GET /shipping-methods (Shipping v2)"
+- name: create_shipment
+  description: Create a Shipment.
+  source_operation: "POST /shipments (Shipping v2)"
+- name: create_label_file
+  description: Create a shipping label file.
+  source_operation: "POST /label-files (Shipping v2)"
+- name: create_shipping_webhook
+  description: Register a shipping webhook.
+  source_operation: "POST /webhooks (Shipping v2)"

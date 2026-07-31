@@ -1,8 +1,21 @@
 aid: montonio
 name: Montonio
-description: 'Montonio is a company surfaced as a portfolio company of index-ventures and added to the
-  API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the
-  enrichment pipeline.'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v1
+description: >-
+  Montonio is an Estonian fintech providing a unified payments and shipping
+  platform for e-commerce merchants across the Baltics, Poland, and Finland. Its
+  developer platform exposes two JWT-authenticated REST APIs: the Payments API
+  (Stargate) for bank payment initiation, card payments, MobilePay, BLIK, and
+  Buy-Now-Pay-Later / Hire-Purchase financing, together with orders, refunds,
+  payment links, checkout sessions and payout reporting; and the Shipping API
+  (v2) for multi-carrier label printing, parcel tracking, pickup points, and
+  shipment management. Montonio serves over 8,000 businesses, ships ready-made
+  plugins for WooCommerce, Magento and PrestaShop, and publishes a first-party
+  JavaScript SDK with embeddable checkout UI components.
 url: https://raw.githubusercontent.com/api-evangelist/montonio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,13 +23,79 @@ x-backed-by:
 - index-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6745c818f143d246f266b299/68b9ab2dc787d1c75659148a_Frame%201%20(3).png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Fintech
-apis: []
+- Payments
+- Payment Processing
+- Open Banking
+- E-commerce
+- Shipping
+- Logistics
+- Financing
+- Baltics
+- Webhooks
+- SDK
+apis:
+- name: Montonio Payments API (Stargate)
+  description: >-
+    JWT-authenticated REST API for collecting payments (bank payment initiation,
+    cards, MobilePay, BLIK, BNPL / Hire-Purchase), creating and validating
+    Orders, issuing Refunds, generating Payment Links, opening embedded checkout
+    Sessions, listing available payment methods, and retrieving payout report
+    statements. HS256 JWTs carry the request payload for POST endpoints.
+  humanURL: https://docs.montonio.com/api/stargate/overview
+  baseURL: https://stargate.montonio.com/api
+  tags:
+  - Payments
+  - Orders
+  - Refunds
+  - Financing
+  properties:
+  - type: Documentation
+    url: https://docs.montonio.com/api/stargate/overview
+  - type: APIReference
+    url: https://docs.montonio.com/api/stargate/reference
+  - type: GettingStarted
+    url: https://docs.montonio.com/api/stargate/checklist
+  - type: Webhooks
+    url: https://docs.montonio.com/api/stargate/guides/webhooks
+- name: Montonio Shipping API (v2)
+  description: >-
+    JWT-authenticated REST API for multi-carrier shipping: list carriers and
+    shipping methods, fetch pickup points and courier services, calculate rates,
+    create and update Shipments, generate and fetch Label Files, and manage
+    Webhooks. Uses Bearer HS256 JWTs signed with the store Secret Key.
+  humanURL: https://docs.montonio.com/api/shipping-v2/overview
+  baseURL: https://shipping.montonio.com/api/v2
+  tags:
+  - Shipping
+  - Logistics
+  - Labels
+  - Tracking
+  properties:
+  - type: Documentation
+    url: https://docs.montonio.com/api/shipping-v2/overview
+  - type: APIReference
+    url: https://docs.montonio.com/api/shipping-v2/reference
+  - type: Webhooks
+    url: https://docs.montonio.com/api/shipping-v2/guides/webhooks
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +103,68 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://www.montonio.com
+  url: https://www.montonio.com
+- type: DeveloperPortal
+  url: https://docs.montonio.com
+- type: Documentation
+  url: https://docs.montonio.com/introduction
+- type: APIReference
+  url: https://docs.montonio.com/api/stargate/reference
+- type: GettingStarted
+  url: https://docs.montonio.com/api/stargate/checklist
+- type: Authentication
+  url: authentication/montonio-authentication.yml
+- type: Pricing
+  url: https://www.montonio.com/pricing
+- type: SignUp
+  url: https://partner.montonio.com/signup?locale=en_US
+- type: Login
+  url: https://partner.montonio.com/login?locale=en_US
+- type: Support
+  url: https://help.montonio.com/
+- type: HelpCenter
+  url: https://help.montonio.com/
+- type: Blog
+  url: https://www.montonio.com/blog
+- type: StatusPage
+  url: https://status.montonio.com
+- type: GitHubOrganization
+  url: https://github.com/montonio
+- type: TermsOfService
+  url: https://www.montonio.com/legal
+- type: PrivacyPolicy
+  url: https://www.montonio.com/legal
+- type: Packages
+  url: packages/montonio-packages.yml
+- type: SDKs
+  url: packages/montonio-packages.yml
+- type: Components
+  url: components/montonio-components.yml
+- type: WellKnown
+  url: well-known/montonio-well-known.yml
+- type: MCPServer
+  url: mcp/montonio-mcp.yml
+- type: LLMsTxt
+  url: llms/montonio-llms.txt
+- type: Conformance
+  url: conformance/montonio-conformance.yml
+- type: ErrorCatalog
+  url: errors/montonio-problem-types.yml
+- type: DeclineCodes
+  url: errors/montonio-decline-codes.yml
+- type: Lifecycle
+  url: lifecycle/montonio-lifecycle.yml
+- type: DomainSecurity
+  url: security/montonio-domain-security.yml
+- type: Sandbox
+  url: sandbox/montonio-sandbox.yml
+- type: Conventions
+  url: conventions/montonio-conventions.yml
+- type: Idempotency
+  url: conventions/montonio-conventions.yml
+- type: DataModel
+  url: data-model/montonio-data-model.yml
+- type: Webhooks
+  url: asyncapi/montonio-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml

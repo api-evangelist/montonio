@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: generated
+source: https://docs.montonio.com (documented Stargate + Shipping v2 operations)
+notes: >-
+  Agent Skills grounded in Montonio's real, documented REST operations (Montonio
+  publishes no OpenAPI, so operations are referenced by their documented HTTP
+  method + path). Auth, idempotency, and webhook-verification rules are pulled
+  from conventions/ and errors/.
+skills:
+- file: montonio-create-and-validate-order.md
+  name: Create and validate a Montonio Order
+  api: Montonio Payments API (Stargate)
+  operations: ["GET /stores/payment-methods", "POST /orders", "GET /orders/:orderUuid"]
+- file: montonio-refund-order.md
+  name: Refund a Montonio Order idempotently
+  api: Montonio Payments API (Stargate)
+  operations: ["POST /refunds"]
+- file: montonio-create-shipment-and-label.md
+  name: Create a shipment and print a label
+  api: Montonio Shipping API (v2)
+  operations: ["GET /shipping-methods", "POST /shipments", "POST /label-files", "GET /label-files/{labelFileId}"]

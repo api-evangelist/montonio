@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/stargate/reference#authentication
+docs:
+- https://docs.montonio.com/api/stargate/reference#authentication
+- https://docs.montonio.com/api/shipping-v2/reference#authentication
+- https://docs.montonio.com/introduction#api-keys
+summary:
+  types: [http]
+  scheme: bearer
+  bearer_format: JWT
+  algorithm: HS256
+  credential_source: Partner System store API keys (Access Key + Secret Key)
+  key_environments: [sandbox, production]
+notes: >-
+  Both Montonio APIs authenticate with JSON Web Tokens (JWT) signed with the
+  store Secret Key using HMAC SHA256 (HS256); every token must carry the store
+  Access Key. There is no OAuth2 client-credentials or scope surface, so no
+  scopes/ artifact applies. Keys are issued per store under Partner System ->
+  Stores -> API Keys, separately for the Sandbox and Production environments;
+  generating new keys invalidates the old ones.
+schemes:
+- name: StargatePostJWT
+  api: Montonio Payments API (Stargate)
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  algorithm: HS256
+  placement: >-
+    GET endpoints send the signed JWT in the Authorization header. POST endpoints
+    send the JWT AS the request payload (the token itself contains the request
+    data), with the minimum payload {accessKey, exp}.
+  required_claims: [accessKey, exp]
+  source: docs
+- name: ShippingBearerJWT
+  api: Montonio Shipping API (v2)
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  algorithm: HS256
+  placement: All endpoints require the JWT in the Authorization header as a Bearer token.
+  required_claims: [accessKey, exp]
+  source: docs
+connect_flow:
+  name: Connect Montonio (for plugins)
+  description: >-
+    An OAuth-like authorization flow for plugin/platform partners: the merchant
+    is sent to the Montonio Partner System to consent, a state parameter guards
+    against CSRF, and a short-lived single-use one-time code is exchanged
+    server-to-server for the store API keys.
+  docs: https://docs.montonio.com/api/stargate/guides

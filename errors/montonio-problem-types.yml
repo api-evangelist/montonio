@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/shipping-v2/reference (Common API response codes) + Stargate refund/order errors
+format: http-status-json
+notes: >-
+  Montonio does not use RFC 9457 problem+json; errors are plain JSON with HTTP
+  status codes. Catalog derived from the documented "Common API response codes"
+  table (Shipping v2) and documented Stargate error cases.
+problems:
+- status: 400
+  title: Validation failed
+  detail: Input data validation failed for the request body, query params, or URL parameters.
+  applies_to: all endpoints
+- status: 401
+  title: JWT validation failed
+  detail: The JWT token could not be validated. Check the authentication guide to construct a valid token (Access Key claim, HS256 signature with Secret Key, valid exp).
+  applies_to: all endpoints
+- status: 404
+  title: Resource not found
+  detail: The requested or related resource does not exist.
+  applies_to: all endpoints
+- status: 400
+  title: Duplicate refund idempotency key
+  detail: "Order uuid [...] already has a refund with the same idempotency key."
+  applies_to: "POST /refunds (Stargate)"
+  source_operation: "POST /refunds"

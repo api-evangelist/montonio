@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/stargate/guides/refunds (Refund status descriptions)
+notes: >-
+  Montonio is a payments provider but does not publish a card-authorization
+  decline-code table (card entry and 3DS are handled on Montonio-hosted fields).
+  The closest published failure-reason registry is the Refund status +
+  refundStatusDescription set: when a refund is retrying (PENDING) or has
+  permanently failed (REJECTED), refundStatusDescription carries the reason.
+  Captured here as the decline/failure-reason catalog. Order payment failures are
+  surfaced via paymentStatus (see lifecycle) rather than granular decline codes.
+envelope_field: refundStatusDescription
+masked_to_buyer: true
+decline_codes:
+- code: INSUFFICIENT_FUNDS
+  meaning: The settlement account lacks sufficient funds to process the refund.
+  action: Fund the settlement account; the system retries automatically while PENDING.
+- code: REFUND_EXCEEDS_ORDER_PAID_AMOUNT
+  meaning: The refund amount exceeds the paid amount of the order.
+  action: Lower the refund amount to at most the order's paid amount.
+- code: DECLINED
+  meaning: The payment provider declined the refund.
+  action: Contact Montonio support; retry may not succeed.
+- code: EXPIRED_OR_CANCELLED_CARD
+  meaning: The customer's card has expired or been cancelled.
+  action: Refund via an alternative method; card cannot receive the refund.
+- code: LOST_OR_STOLEN_CARD
+  meaning: The customer's card has been reported lost or stolen.
+  action: Refund via an alternative method.
+- code: EXPIRED
+  meaning: The refund could not be processed after all retry attempts were exhausted.
+  action: Re-initiate the refund or contact support.
+- code: OTHER
+  meaning: The refund failed for an unspecified reason.
+  action: Check with Montonio support for details.

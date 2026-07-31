@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com (reference + guides)
+authentication:
+  style: JWT (HS256) Bearer; POST payloads ARE the signed JWT on Stargate
+  detail: See authentication/montonio-authentication.yml
+idempotency:
+  supported: true
+  scope: "POST /refunds (Stargate)"
+  mechanism: >-
+    Refund requests carry a client-generated `idempotencyKey` (recommended V4
+    UUID) in the token payload. Montonio recognizes retries with the same key and
+    rejects a second distinct refund attempt reusing a key with HTTP 400
+    ("already has a refund with same idempotency key"). Montonio recommends
+    storing the key to prevent duplicate refunds.
+  header: null
+  field: idempotencyKey
+pagination:
+  style: offset
+  params: [limit, offset, order]
+  example: "GET /stores/:storeUuid/payouts?limit=50&offset=0&order=DESC"
+request_tracing:
+  request_id_header: null
+  webhook_correlation: Related webhook events for one integration arrive at a single notificationUrl (event type in body).
+versioning:
+  style: uri-path (Stargate unversioned; Shipping v2)
+  cross_ref: lifecycle/montonio-lifecycle.yml
+error_envelope:
+  format: plain JSON + HTTP status (not RFC 9457)
+  cross_ref: errors/montonio-problem-types.yml
+rate_limiting:
+  documented: false
+  signal: none published
+webhooks:
+  transport: HTTP POST with a signed JWT (orderToken / refundToken) in the body
+  source_ips: [35.156.245.42, 35.156.159.169]
+  user_agent: MontonioWebhooks/1.0
+  verification: Verify JWT signature with the store Secret Key.
+  cross_ref: asyncapi/montonio-webhooks.yml

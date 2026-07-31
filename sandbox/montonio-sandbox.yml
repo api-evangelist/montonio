@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/shipping-v2/guides/sandbox + Stargate embedded-cards/BLIK guides
+environments:
+  production:
+    stargate: https://stargate.montonio.com/api
+    shipping: https://shipping.montonio.com/api/v2
+  sandbox:
+    stargate: https://sandbox-stargate.montonio.com/api
+    shipping: https://sandbox-shipping.montonio.com/api/v2
+keys: >-
+  Sandbox and Production API keys are issued separately from the Partner System
+  (Stores -> API Keys). Sandbox keys are available immediately after signup;
+  production keys unlock after business approval.
+sandbox_behavior:
+- Shipping sandbox does not call real carrier APIs; responses are mocked and labels are dummy.
+- Carrier activation in sandbox accepts any dummy credentials.
+- POST /shipments does not validate phone numbers or address data in sandbox.
+- Tracking Page renders but shows no real-time tracking (nothing is actually shipped).
+- Test mode must be activated in the Partner System before using the sandbox.
+test_cards:
+- number: "5577 0000 5577 0004"
+  expiry: "03/30"
+  cvc: "737"
+  result: Successful payment
+- number: "5454 5454 5454 5454"
+  expiry: "03/30"
+  cvc: "737"
+  result: Successful payment with 3DS
+test_hooks:
+- description: Trigger redirect 3DS flow
+  how: Set billingAddress.email to redirect-3ds-test@montonio.com when creating the Order, then use the 3DS test card.
+- description: Simulate a failed card payment
+  how: Use a test card with an invalid CVC, or the 3DS card with a correct CVC and fail the 3DS authentication.
+test_blik_codes:
+- code: "777 123"
+  result: Successful payment
+- code: "555 555"
+  result: Incorrect BLIK code

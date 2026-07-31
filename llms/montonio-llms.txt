@@ -1,0 +1,32 @@
+# Montonio API Documentation
+
+> Montonio developer documentation for payments and shipping integration.
+
+## Payments API (Stargate)
+- [API changes](/api/stargate/changes)
+- [Integration checklist](/api/stargate/checklist)
+- [Using the AUTHORIZED status](/api/stargate/guides/authorized-status)
+- [Embedded BLIK in checkout](/api/stargate/guides/embedded-blik)
+- [Embedded BLIK in checkout (custom integration)](/api/stargate/guides/embedded-blik-custom)
+- [Embedded BLIK Custom Flow Diagram](/api/stargate/guides/embedded-blik-custom-diagram)
+- [Embedded Cards in checkout](/api/stargate/guides/embedded-cards)
+- [Embedded cards migration guide for plugins](/api/stargate/guides/embedded-cards-plugins-migration)
+- [Financing payment methods](/api/stargate/guides/financing)
+- [Create and validate an Order](/api/stargate/guides/orders)
+- [Payment links](/api/stargate/guides/payment-links)
+- [Display payment methods](/api/stargate/guides/payment-methods)
+- [Retrieve payout report statements](/api/stargate/guides/payouts)
+- [Refund an Order](/api/stargate/guides/refunds)
+- [Listen to webhooks](/api/stargate/guides/webhooks)
+- [Payments](/api/stargate/overview)
+- [API reference](/api/stargate/reference)
+- [UI widgets](/api/stargate/widgets)
+
+## Shipping API (v2)
+- [Creating a Label File](/api/shipping-v2/guides/labels)
+- [Using the sandbox environment](/api/shipping-v2/guides/sandbox)
+- [Creating and updating Shipments](/api/shipping-v2/guides/shipments)
+- [Fetching Shipping Methods](/api/shipping-v2/guides/shipping-methods)
+- [Creating a Webhook](/api/shipping-v2/guides/webhooks)
+- [Shipping](/api/shipping-v2/overview)
+- [Shipping](/api/shipping-v2/reference)

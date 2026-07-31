@@ -1,0 +1,79 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.montonio.com (Stargate + Shipping v2 documented resources)
+notes: >-
+  Entity graph derived from Montonio's documented REST resources and identifier
+  fields (no OpenAPI is published). Order is the central Payments entity; Shipment
+  is the central Shipping entity.
+entities:
+- name: Order
+  id: orderUuid (UUID)
+  api: Stargate
+  key_fields: [paymentStatus, grandTotal, currency, merchantReference, paymentUrl, notificationUrl, returnUrl]
+  statuses: [PENDING, PAID, VOIDED, PARTIALLY_REFUNDED, REFUNDED, ABANDONED, AUTHORIZED]
+  relationships:
+  - {type: has_many, target: Refund, via: orderUuid}
+  - {type: has_one, target: PaymentMethod, via: payment.method}
+- name: Refund
+  id: refundUuid (UUID)
+  api: Stargate
+  key_fields: [status, refundStatusDescription, amount, idempotencyKey]
+  statuses: [PENDING, PROCESSING, SUCCESSFUL, REJECTED, CANCELED]
+  relationships:
+  - {type: belongs_to, target: Order, via: orderUuid}
+- name: PaymentLink
+  id: paymentLinkUuid (UUID)
+  api: Stargate
+  key_fields: [amount, currency, description, expiresAt, url]
+  relationships:
+  - {type: has_one, target: PaymentMethod, via: method}
+- name: Session
+  id: sessionUuid (UUID)
+  api: Stargate
+  key_fields: [accessKey]
+  relationships:
+  - {type: has_one, target: Order, via: order}
+- name: PaymentMethod
+  api: Stargate
+  key_fields: [systemName]
+  enum: [paymentInitiation, cardPayments, mobilePay, blik, bnpl, hirePurchase]
+- name: Payout
+  id: payoutUuid (UUID)
+  api: Stargate
+  relationships:
+  - {type: belongs_to, target: Store, via: storeUuid}
+- name: StoreBalance
+  api: Stargate
+  relationships:
+  - {type: belongs_to, target: Store, via: storeUuid}
+- name: Store
+  id: storeUuid (UUID)
+  api: Stargate
+  key_fields: [accessKey, secretKey]
+- name: Shipment
+  id: shipmentId
+  api: Shipping v2
+  key_fields: [shippingMethod, parcels, products]
+  relationships:
+  - {type: has_one, target: ShippingMethod, via: shippingMethodId}
+  - {type: has_many, target: LabelFile, via: shipmentId}
+- name: LabelFile
+  id: labelFileId
+  api: Shipping v2
+  relationships:
+  - {type: belongs_to, target: Shipment, via: shipmentId}
+- name: ShippingMethod
+  api: Shipping v2
+  relationships:
+  - {type: belongs_to, target: Carrier, via: carrierId}
+  - {type: has_many, target: PickupPoint, via: shippingMethodId}
+- name: Carrier
+  api: Shipping v2
+  examples: [Omniva, DPD, Venipak, SmartPosti]
+- name: PickupPoint
+  api: Shipping v2
+  relationships:
+  - {type: belongs_to, target: ShippingMethod, via: shippingMethodId}
+- name: ShippingWebhook
+  id: webHookId
+  api: Shipping v2

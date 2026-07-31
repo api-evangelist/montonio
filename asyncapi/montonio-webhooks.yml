@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.montonio.com/api/stargate/guides/webhooks + https://docs.montonio.com/api/shipping-v2/guides/webhooks
+type: Webhooks
+notes: >-
+  Montonio documents webhooks but publishes no AsyncAPI document, so this is a
+  Webhooks catalog (not an AsyncAPI spec). Payments webhooks are delivered as an
+  HTTP POST whose body is a signed JWT; Shipping webhooks are registered per
+  store via POST /webhooks.
+delivery:
+  transport: HTTP POST
+  source_ips: [35.156.245.42, 35.156.159.169]
+  user_agent: MontonioWebhooks/1.0
+  verification: Verify the JWT signature with the store Secret Key; never trust unverified webhook data.
+payments_webhooks:
+  configure: Include notificationUrl in the Order or Payment Link JWT payload.
+  events:
+  - name: order.status_changed
+    body_field: orderToken
+    description: Fired whenever an Order's paymentStatus transitions (PENDING, PAID, VOIDED, PARTIALLY_REFUNDED, REFUNDED, ABANDONED, AUTHORIZED). Token contains the order details.
+  - name: refund.status_changed
+    body_field: refundToken
+    description: Fired on Refund status changes (PENDING, PROCESSING, SUCCESSFUL, REJECTED, CANCELED). Token contains refund details including refundStatusDescription.
+shipping_webhooks:
+  configure: Register via POST /webhooks (Shipping v2); manage via GET /webhooks and DELETE /webhooks/{webHookId}.
+  best_practice: Use a single webhook URL and branch on the event type in the payload.
+  events:
+  - name: label_file.ready
+    description: A requested label file has finished generating (asynchronous label flow).
+  - name: shipment.updated
+    description: Shipment state changed.

@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.montonio.com (auth, payment-methods, error semantics)
+notes: >-
+  Standards conformance derived from Montonio's documented behavior. No published
+  compliance/certification program (SOC 2 / ISO 27001 / PCI DSS attestation page)
+  was found on a trust center, so no `Compliance` pointer is emitted. Montonio
+  operates PSD2 open-banking payment initiation in the EU, but does not publish
+  the licence/scheme details in developer docs.
+standards:
+- id: jwt-hs256
+  conforms: true
+  evidence: Both APIs authenticate with HS256-signed JWTs (RFC 7519 + RFC 7515).
+- id: oauth2
+  conforms: false
+  evidence: No OAuth2 client-credentials/authorization-code security scheme; a bespoke Connect one-time-code exchange is used for plugins.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use plain JSON with HTTP status codes, not application/problem+json.
+- id: rest-json
+  conforms: true
+  evidence: Both APIs are JSON-over-HTTPS REST with conventional 2xx/4xx status codes.
+- id: webhooks-signed-jwt
+  conforms: true
+  evidence: Order and refund webhooks deliver signed JWTs (orderToken/refundToken) verified with the store Secret Key.
+- id: psd2-payment-initiation
+  conforms: true
+  evidence: Stargate offers bank payment initiation (paymentInitiation) across EUR/PLN, an EU PSD2 PIS use case.
+- id: pci-dss
+  conforms: unknown
+  evidence: Card payments are supported and card data is entered via Montonio-hosted embedded fields/3DS; no PCI attestation page published in developer docs.
+- id: pagination-offset
+  conforms: true
+  evidence: Payout listing uses limit/offset/order query params.
+- id: idempotency
+  conforms: true
+  evidence: POST /refunds requires a client-generated idempotencyKey to dedupe retries.
