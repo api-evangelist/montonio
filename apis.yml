@@ -45,6 +45,19 @@ tags:
 - Payments
 - Payment Processing
 - Open Banking
+- E-Commerce
+- Shipping
+- Logistics
+- Financing
+- Baltics
+- Webhook
+- SDK
+tags_raw:
+- Company
+- Fintech
+- Payments
+- Payment Processing
+- Open Banking
 - E-commerce
 - Shipping
 - Logistics
@@ -63,6 +76,11 @@ apis:
   humanURL: https://docs.montonio.com/api/stargate/overview
   baseURL: https://stargate.montonio.com/api
   tags:
+  - Payments
+  - Order
+  - Refunds
+  - Financing
+  tags_raw:
   - Payments
   - Orders
   - Refunds
