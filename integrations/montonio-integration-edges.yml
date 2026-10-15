@@ -11,6 +11,7 @@ checked:
 - https://n8n.io/integrations/montonio/
 - https://www.openbanking.org.uk/regulated-providers/montonio-finance-uab/
 - https://zapier.com/apps/montonio/integrations
+- wordpress/integrations/wordpress-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -31,4 +32,21 @@ edges:
     api_families: null
     detected_by: sweep-standard-registers.py
     detected: '2026-10-14'
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/montonio-for-woocommerce/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - Montonio for WooCommerce
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
 templates: []
