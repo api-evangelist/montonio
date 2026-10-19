@@ -6,9 +6,16 @@ source:
 - https://composio.dev/toolkits/montonio
 - https://monid.ai/tools/montonio
 checked:
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/montonio
+- https://crates.io/api/v1
 - https://monid.ai/tools/montonio
 - https://n8n.io/integrations/montonio/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://www.openbanking.org.uk/regulated-providers/montonio-finance-uab/
 - https://zapier.com/apps/montonio/integrations
 - wordpress/integrations/wordpress-integration-edges.yml
@@ -49,4 +56,34 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: WordPress plugin
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@montonio/montonio-js
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@montonio/montonio-js'
+      version: 1.2.0
+      released: '2026-08-24'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@montonio/montonio-js
+      repo_leg: github-org:montonio
+      publisher_leg: org:montonio
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
