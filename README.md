@@ -64,6 +64,110 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Montonio is a company surfaced as a portfolio company of index-ventures and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.
+Montonio is an Estonian fintech providing a unified payments and shipping platform for e-commerce merchants across the Baltics, Poland, and Finland. Its developer platform exposes two JWT-authenticated REST APIs: the Payments API (Stargate) for bank payment initiation, card payments, MobilePay, BLIK, and Buy-Now-Pay-Later / Hire-Purchase financing, together with orders, refunds, payment links, checkout sessions and payout reporting; and the Shipping API (v2) for multi-carrier label printing, parcel tracking, pickup points, and shipment management. Montonio serves over 8,000 businesses, ships ready-made plugins for WooCommerce, Magento and PrestaShop, and publishes a first-party JavaScript SDK with embeddable checkout UI components.
 
-Backed by: index-ventures — http://www.montonio.com
+**Areas:** Company · Fintech · Payments · Payment Processing · Open Banking · E-Commerce · Shipping · Logistics · Financing · Baltics · Webhook · SDK
+
+## Montonio on APIs.io
+
+Everything profiled for Montonio is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/montonio/](https://apis.io/providers/montonio/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Montonio Payments API (Stargate)](https://apis.io/apis/montonio/montonio-payments-api-stargate/) — JWT-authenticated REST API for collecting payments (bank payment initiation, cards, MobilePay, BLIK, BNPL / Hire-Purchase), creating and validating Orders,…
+- [Montonio Shipping API (v2)](https://apis.io/apis/montonio/montonio-shipping-api-v2/) — JWT-authenticated REST API for multi-carrier shipping: list carriers and shipping methods, fetch pickup points and courier services, calculate rates, create…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Montonio Webhooks](https://apis.io/asyncapis/montonio/montonio-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [montonio](https://apis.io/servers/montonio/montonio/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Montonio Authentication](https://apis.io/security/montonio/montonio-authentication/)
+- [Montonio Domain Security](https://apis.io/security/montonio/montonio-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.montonio.com)
+- [Documentation](https://docs.montonio.com/introduction)
+- [Getting started](https://docs.montonio.com/api/stargate/checklist)
+- [API reference](https://docs.montonio.com/api/stargate/reference)
+- [Pricing](https://www.montonio.com/pricing)
+- [Sign up](https://partner.montonio.com/signup?locale=en_US)
+- [Support](https://help.montonio.com/)
+- [Blog](https://www.montonio.com/blog)
+- [Terms of service](https://www.montonio.com/legal)
+- [Privacy policy](https://www.montonio.com/legal)
+- [GitHub](https://github.com/montonio)
+- [Status](https://status.montonio.com)
+
+## API Evangelist rating
+
+**Kin Score 43.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 38.2 |
+
+**Agent readiness 26.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 19.7** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/montonio/](https://apis.io/providers/montonio/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Montonio: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/montonio/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
